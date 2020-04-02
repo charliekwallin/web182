@@ -1,0 +1,33 @@
+<?php
+include_once("includes/header.php");
+include_once("database/connection.php");
+include_once("database/errors.php");
+include_once("database/queries.php");
+
+database_is_connected_error($connect);
+
+$userQuery = hourly_wage_less_than_ten_dollars_query();
+
+$result = mysqli_query($connect, $userQuery);
+
+cannot_run_query_error($result);
+
+if (mysqli_num_rows($result) == 0) {
+	print("No records found with query $userQuery");
+}
+else { 
+
+	echo "<h1>List of Employees Who Need a Raise</h1>";
+	echo "<table border=\"1\" width=\"2em\">";
+	echo "<tr><th>EmpID</th><th>First</th><th>Last</th></tr>";
+	
+	while($row = mysqli_fetch_assoc($result)) { 
+		echo ("<tr><td>" . $row['empID'] . "</td><td>" . $row['firstName'] . "</td><td>" . $row['lastName'] . "</td></tr>");
+	}
+	echo "</table>";
+}
+	mysqli_close($connect); 
+	include_once("includes/footer.php");
+?>
+
+
