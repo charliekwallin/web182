@@ -1,8 +1,6 @@
 <?php
-include_once("includes/header.php");
-include_once("database/connection.php");
-include_once("database/errors.php");
-include_once("database/queries.php");
+$page_title = 'Raises'; 
+include_once("initialize.php");
 
 database_is_connected_error($connect);
 
