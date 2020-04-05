@@ -2,13 +2,13 @@
 $page_title = 'Raises'; 
 include_once("initialize.php");
 
-database_is_connected_error($connect);
+check_db_connection($connect);
 
 $userQuery = hourly_wage_less_than_ten_dollars_query();
 
 $result = mysqli_query($connect, $userQuery);
 
-cannot_run_query_error($result);
+check_that_query_runs($result);
 
 if (mysqli_num_rows($result) == 0) {
 	print("No records found with query $userQuery");
