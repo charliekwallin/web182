@@ -16,11 +16,6 @@
 include_once("database/connection.php");
 $connect = mysqli_connect(SERVER, USER, PW, DB);
 
-// if (strlen($_POST['empID'])< 5) {
-// 	die("Error: You must enter 5 integers for the employee ID");
-// } else {
-// 	$empID = $_POST['empID'];
-// }
 
 if (!$connect) 
 {
